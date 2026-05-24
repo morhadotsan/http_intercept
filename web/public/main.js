@@ -34,14 +34,16 @@ function renderResult(r){
 	if(r.status !== "success"){
 		$("grade").textContent = "?";
 		$("grade").className = "grade";
+		$("grade").removeAttribute("data-grade");
 		$("score").textContent = "";
 		$("meta").textContent = "Error: "+(r.error_message||"unknown");
 		$("tests-table").querySelector("tbody").innerHTML = "";
 		return;
 	}
 	$("grade").textContent = r.grade;
-	$("grade").className = "grade "+r.grade.replace("+","\\+");
-	$("score").textContent = r.score+" / 100";
+	$("grade").className = "grade";
+	$("grade").setAttribute("data-grade", r.grade);
+	$("score").textContent = r.score;
 	$("meta").textContent = `${r.final_url} • HTTP ${r.status_code}`;
 
 	const tbody = $("tests-table").querySelector("tbody");

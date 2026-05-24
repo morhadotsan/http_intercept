@@ -35,11 +35,19 @@ button:disabled { background: #2a2f3a; cursor: not-allowed; }
 	font-size: 48px; font-weight: bold; padding: 0 18px;
 	border-radius: 6px; background: #2a2f3a;
 }
-.grade.A, .grade.A\+ { background: #16a34a; }
-.grade.B { background: #65a30d; }
-.grade.C { background: #ca8a04; }
-.grade.D, .grade.E { background: #ea580c; }
-.grade.F { background: #dc2626; }
+.grade[data-grade="A+"],
+.grade[data-grade="A"]  { background: #16a34a; }
+.grade[data-grade="A-"],
+.grade[data-grade="B+"] { background: #4d7c0f; }
+.grade[data-grade="B"],
+.grade[data-grade="B-"] { background: #65a30d; }
+.grade[data-grade="C+"],
+.grade[data-grade="C"]  { background: #ca8a04; }
+.grade[data-grade="C-"],
+.grade[data-grade="D+"] { background: #d97706; }
+.grade[data-grade="D"],
+.grade[data-grade="D-"] { background: #ea580c; }
+.grade[data-grade="F"]  { background: #dc2626; }
 .score { font-size: 24px; }
 .meta { color: #9aa3af; font-size: 13px; }
 

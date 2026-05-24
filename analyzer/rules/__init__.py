@@ -1,17 +1,25 @@
-from . import hsts, csp, x_frame_options, x_content_type_options, \
-    referrer_policy, permissions_policy, coop, coep, corp, \
-    set_cookie, https_redirect
+from . import (
+    csp,
+    set_cookie,
+    cors,
+    https_redirect,
+    referrer_policy,
+    hsts,
+    subresource_integrity,
+    x_content_type_options,
+    x_frame_options,
+    corp,
+)
 
 ALL_RULES = [
-    hsts.check,
     csp.check,
-    x_frame_options.check,
-    x_content_type_options.check,
-    referrer_policy.check,
-    permissions_policy.check,
-    coop.check,
-    coep.check,
-    corp.check,
     set_cookie.check,
+    cors.check,
     https_redirect.check,
+    referrer_policy.check,
+    hsts.check,
+    subresource_integrity.check,
+    x_content_type_options.check,
+    x_frame_options.check,
+    corp.check,
 ]

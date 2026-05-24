@@ -19,12 +19,16 @@ def fetch(url):
             set_cookies = []
     if not set_cookies and "Set-Cookie" in headers:
         set_cookies = [headers["Set-Cookie"]]
+    content_type = headers.get("Content-Type", "")
+    html_body = r.text if "html" in content_type.lower() else ""
     return {
         "status_code": r.status_code,
         "final_url": r.url,
         "headers": headers,
         "redirect_chain": chain,
         "set_cookies": set_cookies,
+        "html_body": html_body,
+        "content_type": content_type,
     }
 
 
@@ -47,6 +51,8 @@ def scan():
         "final_url": fetched["final_url"],
         "redirect_chain": fetched["redirect_chain"],
         "set_cookies": fetched["set_cookies"],
+        "html_body": fetched["html_body"],
+        "content_type": fetched["content_type"],
     }
 
     results = [rule(fetched["headers"], context) for rule in ALL_RULES]
