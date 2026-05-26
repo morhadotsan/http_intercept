@@ -1,0 +1,1 @@
+[Click here to read Project Structure well formatted](https://htmlpreview.github.io/?https://github.com/Emperor-Trillion/http_intercept/blob/sunday-edit/documentation/project_structure.html)

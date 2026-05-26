@@ -6,7 +6,6 @@ from scoring import score_results
 app = Flask(__name__)
 TIMEOUT = 10
 
-
 def fetch(url):
     r = requests.get(url, timeout=TIMEOUT, allow_redirects=True)
     chain = [resp.url for resp in r.history] + [r.url]

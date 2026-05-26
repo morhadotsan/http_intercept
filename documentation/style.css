@@ -1,0 +1,346 @@
+/* ============================================================
+   http_intercept — Project Structure Documentation
+   Clean, print-friendly report style
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+	font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+	font-size: 15px;
+	line-height: 1.65;
+	color: #1f2328;
+	background: #ffffff;
+	margin: 0;
+	padding: 40px 32px 80px;
+	max-width: 1080px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* ---------- Header ---------- */
+.doc-header {
+	border-bottom: 3px solid #1f4a8a;
+	padding-bottom: 20px;
+	margin-bottom: 32px;
+}
+.doc-header h1 {
+	font-size: 32px;
+	margin: 0 0 6px;
+	color: #0f2a52;
+	letter-spacing: -0.5px;
+}
+.doc-header .subtitle {
+	color: #5a6470;
+	font-size: 16px;
+	margin: 0;
+}
+.doc-meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 18px;
+	margin-top: 14px;
+	font-size: 13px;
+	color: #5a6470;
+}
+.doc-meta span strong { color: #1f2328; }
+
+/* ---------- Table of Contents ---------- */
+.toc {
+	background: #f3f6fb;
+	border: 1px solid #d0d9e6;
+	border-radius: 6px;
+	padding: 16px 22px;
+	margin-bottom: 40px;
+}
+.toc h2 {
+	margin: 0 0 10px;
+	font-size: 16px;
+	color: #0f2a52;
+	border: 0;
+	padding: 0;
+}
+.toc ol {
+	margin: 0;
+	padding-left: 22px;
+	columns: 2;
+	column-gap: 32px;
+}
+.toc li { margin-bottom: 4px; font-size: 14px; }
+.toc a { color: #1f4a8a; text-decoration: none; }
+.toc a:hover { text-decoration: underline; }
+
+/* ---------- Section Headings ---------- */
+h2 {
+	font-size: 22px;
+	color: #0f2a52;
+	margin-top: 48px;
+	margin-bottom: 12px;
+	padding-bottom: 6px;
+	border-bottom: 2px solid #d0d9e6;
+}
+h3 {
+	font-size: 17px;
+	color: #1f4a8a;
+	margin-top: 28px;
+	margin-bottom: 8px;
+}
+h4 {
+	font-size: 15px;
+	color: #1f2328;
+	margin-top: 18px;
+	margin-bottom: 6px;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+p { margin: 0 0 12px; }
+ul, ol { margin: 0 0 14px; padding-left: 24px; }
+li { margin-bottom: 4px; }
+
+strong { color: #0f2a52; }
+em { color: #5a6470; }
+
+/* ---------- Inline code & code blocks ---------- */
+code, .mono {
+	font-family: "Consolas", "Courier New", monospace;
+	font-size: 13px;
+	background: #eef2f7;
+	color: #b54708;
+	padding: 1px 5px;
+	border-radius: 3px;
+}
+pre {
+	background: #0f2a52;
+	color: #e8eef7;
+	padding: 14px 18px;
+	border-radius: 6px;
+	overflow-x: auto;
+	font-family: "Consolas", "Courier New", monospace;
+	font-size: 13px;
+	line-height: 1.5;
+	margin: 12px 0;
+}
+pre code {
+	background: transparent;
+	color: inherit;
+	padding: 0;
+}
+
+/* ---------- Tables ---------- */
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 14px 0 20px;
+	font-size: 14px;
+}
+th, td {
+	text-align: left;
+	padding: 8px 10px;
+	border: 1px solid #d0d9e6;
+	vertical-align: top;
+}
+th {
+	background: #f3f6fb;
+	color: #0f2a52;
+	font-weight: 600;
+}
+tr:nth-child(even) td { background: #fafbfd; }
+
+/* ---------- File tree ---------- */
+.tree {
+	background: #fafbfd;
+	border: 1px solid #d0d9e6;
+	border-radius: 6px;
+	padding: 16px 22px;
+	font-family: "Consolas", "Courier New", monospace;
+	font-size: 13px;
+	line-height: 1.7;
+	white-space: pre;
+	overflow-x: auto;
+	color: #1f2328;
+}
+.tree .dir { color: #1f4a8a; font-weight: 600; }
+.tree .file { color: #1f2328; }
+.tree .note { color: #5a6470; }
+
+/* ---------- Flow diagram (boxes + arrows) ---------- */
+.diagram {
+	background: #fafbfd;
+	border: 1px solid #d0d9e6;
+	border-radius: 6px;
+	padding: 22px 18px;
+	margin: 16px 0 24px;
+	overflow-x: auto;
+}
+.flow-row {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 0;
+	margin-bottom: 10px;
+}
+.flow-box {
+	display: inline-flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-width: 140px;
+	min-height: 60px;
+	padding: 10px 14px;
+	border: 2px solid #1f4a8a;
+	border-radius: 6px;
+	background: #ffffff;
+	font-size: 13px;
+	font-weight: 600;
+	color: #0f2a52;
+	text-align: center;
+	box-shadow: 0 1px 2px rgba(15, 42, 82, 0.06);
+}
+.flow-box.python { border-color: #2f6f3f; color: #1c4a28; background: #f0f8f2; }
+.flow-box.php    { border-color: #6b3aa0; color: #3d1f63; background: #f5f0fb; }
+.flow-box.db     { border-color: #b54708; color: #7c2d05; background: #fdf5ec; }
+.flow-box.ext    { border-color: #5a6470; color: #1f2328; background: #f3f6fb; }
+.flow-box .sub {
+	display: block;
+	font-size: 11px;
+	font-weight: 400;
+	color: #5a6470;
+	margin-top: 2px;
+}
+.flow-arrow {
+	font-family: "Consolas", monospace;
+	font-size: 22px;
+	color: #1f4a8a;
+	padding: 0 10px;
+	font-weight: bold;
+}
+.flow-arrow.down {
+	font-size: 24px;
+	padding: 6px 0;
+	display: block;
+	text-align: center;
+	width: 100%;
+}
+.flow-caption {
+	text-align: center;
+	color: #5a6470;
+	font-size: 12px;
+	font-style: italic;
+	margin-top: 8px;
+}
+
+/* ---------- ER diagram ---------- */
+.er-diagram {
+	display: flex;
+	gap: 24px;
+	justify-content: center;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	margin: 16px 0;
+}
+.er-table {
+	border: 2px solid #1f4a8a;
+	border-radius: 6px;
+	background: #ffffff;
+	min-width: 220px;
+	box-shadow: 0 2px 4px rgba(15, 42, 82, 0.08);
+}
+.er-table .er-title {
+	background: #1f4a8a;
+	color: #ffffff;
+	padding: 8px 12px;
+	font-weight: 600;
+	font-family: "Consolas", monospace;
+	font-size: 14px;
+	border-radius: 4px 4px 0 0;
+}
+.er-table ul {
+	margin: 0;
+	padding: 8px 12px;
+	list-style: none;
+	font-family: "Consolas", monospace;
+	font-size: 12px;
+}
+.er-table li {
+	padding: 3px 0;
+	border-bottom: 1px dashed #e3e8ef;
+	margin: 0;
+}
+.er-table li:last-child { border-bottom: 0; }
+.er-table .pk { color: #b54708; font-weight: 600; }
+.er-table .fk { color: #6b3aa0; font-weight: 600; }
+.er-relation {
+	align-self: center;
+	font-family: "Consolas", monospace;
+	color: #5a6470;
+	font-size: 14px;
+	padding-top: 36px;
+}
+
+/* ---------- Callouts ---------- */
+.callout {
+	border-left: 4px solid #1f4a8a;
+	background: #f3f6fb;
+	padding: 12px 16px;
+	margin: 14px 0;
+	border-radius: 0 4px 4px 0;
+	font-size: 14px;
+}
+.callout.note    { border-color: #1f4a8a; background: #f3f6fb; }
+.callout.warn    { border-color: #b54708; background: #fdf5ec; }
+.callout.tip     { border-color: #2f6f3f; background: #f0f8f2; }
+.callout strong { display: block; margin-bottom: 4px; }
+
+/* ---------- Rule cards ---------- */
+.rule-card {
+	border: 1px solid #d0d9e6;
+	border-radius: 6px;
+	margin-bottom: 18px;
+	background: #ffffff;
+	overflow: hidden;
+}
+.rule-card .rule-head {
+	background: #f3f6fb;
+	padding: 10px 14px;
+	border-bottom: 1px solid #d0d9e6;
+}
+.rule-card .rule-head h3 {
+	margin: 0;
+	font-size: 16px;
+	color: #0f2a52;
+}
+.rule-card .rule-head .rule-file {
+	font-family: "Consolas", monospace;
+	font-size: 12px;
+	color: #5a6470;
+}
+.rule-card .rule-body { padding: 12px 16px; }
+.rule-card table { margin: 6px 0 4px; font-size: 13px; }
+.points-pos { color: #1c4a28; font-weight: 600; }
+.points-neg { color: #9b2c2c; font-weight: 600; }
+.points-zero { color: #5a6470; }
+
+/* ---------- Footer ---------- */
+.doc-footer {
+	margin-top: 64px;
+	padding-top: 16px;
+	border-top: 1px solid #d0d9e6;
+	color: #5a6470;
+	font-size: 13px;
+	text-align: center;
+}
+
+/* ---------- Print rules ---------- */
+@media print {
+	body { padding: 0; max-width: none; font-size: 11pt; }
+	.toc { break-after: page; }
+	h2 { break-before: auto; break-after: avoid; }
+	h3, h4 { break-after: avoid; }
+	pre, .diagram, .rule-card, table { break-inside: avoid; }
+	a { color: #0f2a52; text-decoration: none; }
+	.flow-box { box-shadow: none; }
+}
