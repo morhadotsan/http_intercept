@@ -1,4 +1,4 @@
-from . import (
+from.import (
     csp,
     set_cookie,
     cors,
@@ -21,5 +21,5 @@ ALL_RULES = [
     subresource_integrity.check,
     x_content_type_options.check,
     x_frame_options.check,
-    corp.check,
+    corp.check
 ]

@@ -7,7 +7,6 @@ def _host(url):
     except Exception:
         return ""
 
-
 def check(headers, context):
     name = "Redirection"
     initial = context.get("initial_url", "") or ""
