@@ -2,7 +2,6 @@ BASELINE_SCORE = 100
 MIN_SCORE = 0
 MAX_SCORE = 145
 
-
 def grade(score):
     if score >= 100: return "A+"
     if score >= 90:  return "A"
@@ -17,7 +16,6 @@ def grade(score):
     if score >= 30:  return "D"
     if score >= 25:  return "D-"
     return "F"
-
 
 def score_results(results):
     penalties = sum(r["points"] for r in results if r["points"] < 0)

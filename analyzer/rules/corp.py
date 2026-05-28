@@ -2,7 +2,7 @@ def check(headers, context):
     name = "Cross-Origin-Resource-Policy"
     value = headers.get(name)
     if value is None:
-        return {"header_name": name, "status": "Present", "header_value": None,
+        return {"header_name": name, "status": "Missing", "header_value": None,
                 "points": 0, "message": "corp-not-implemented (defaults to cross-origin)."}
 
     v = value.strip().lower()

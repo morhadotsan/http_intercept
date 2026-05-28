@@ -30,7 +30,6 @@ def fetch(url):
         "content_type": content_type,
     }
 
-
 @app.route("/scan", methods=["POST"])
 def scan():
     data = request.get_json(silent=True) or {}
@@ -66,14 +65,12 @@ def scan():
         "grade": grade_,
         "headers": fetched["headers"],
         "redirect_chain": fetched["redirect_chain"],
-        "tests": results,
+        "tests": results
     })
-
 
 @app.route("/health")
 def health():
     return jsonify({"ok": True})
-
 
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port=5000)

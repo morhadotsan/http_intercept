@@ -31,48 +31,23 @@ if($existing){
 	$url_id = (int)$con->lastInsertId();
 }
 
-$status		= $result["status"] ?? "error";
-$score		= $result["score"] ?? null;
-$grade		= $result["grade"] ?? null;
-$final		= $result["final_url"] ?? null;
-$code		= $result["status_code"] ?? null;
-$headers	= json_encode($result["headers"] ?? null);
-$chain		= json_encode($result["redirect_chain"] ?? null);
-$err		= $result["error_message"] ?? null;
+$status = $result["status"] ?? "error";
+$score = $result["score"] ?? null;
+$grade = $result["grade"] ?? null;
+$final = $result["final_url"] ?? null;
+$code = $result["status_code"] ?? null;
+$headers = json_encode($result["headers"] ?? null);
+$chain = json_encode($result["redirect_chain"] ?? null);
+$err = $result["error_message"] ?? null;
 
-$ins = $con->prepare("
-	INSERT INTO scans
-		(url_id, status, score, grade, final_url, status_code, raw_headers_json, redirect_chain_json, error_message)
-	VALUES
-		(:url_id, :status, :score, :grade, :final, :code, :headers, :chain, :err)
-");
-$ins->execute([
-	":url_id"	=> $url_id,
-	":status"	=> $status,
-	":score"	=> $score,
-	":grade"	=> $grade,
-	":final"	=> $final,
-	":code"		=> $code,
-	":headers"	=> $headers,
-	":chain"	=> $chain,
-	":err"		=> $err,
-]);
+$ins = $con->prepare("INSERT INTO scans (url_id, status, score, grade, final_url, status_code, raw_headers_json, redirect_chain_json, error_message) VALUES (:url_id, :status, :score, :grade, :final, :code, :headers, :chain, :err)");
+$ins->execute([":url_id" => $url_id, ":status" => $status, ":score"	=> $score, ":grade"	=> $grade, ":final"	=> $final, ":code" => $code, ":headers"	=> $headers, ":chain" => $chain, ":err" => $err]);
 $scan_id = (int)$con->lastInsertId();
 
 if($status === "success" && !empty($result["tests"])){
-	$tIns = $con->prepare("
-		INSERT INTO scan_tests (scan_id, header_name, status, header_value, points, message)
-		VALUES (:s, :n, :st, :v, :p, :m)
-	");
+	$tIns = $con->prepare("INSERT INTO scan_tests (scan_id, header_name, status, header_value, points, message) VALUES (:s, :n, :st, :v, :p, :m)");
 	foreach($result["tests"] as $t){
-		$tIns->execute([
-			":s"  => $scan_id,
-			":n"  => $t["header_name"],
-			":st" => $t["status"],
-			":v"  => $t["header_value"],
-			":p"  => (int)$t["points"],
-			":m"  => $t["message"],
-		]);
+		$tIns->execute([":s" => $scan_id, ":n" => $t["header_name"], ":st" => $t["status"], ":v" => $t["header_value"], ":p" => (int)$t["points"], ":m" => $t["message"]]);
 	}
 }
 

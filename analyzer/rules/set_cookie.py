@@ -67,6 +67,9 @@ def check(headers, context):
             anti_csrf_no_samesite.append(cname)
 
     if session_no_secure:
+        if hsts:
+            return {"header_name": name, "status": "Misconfigured", "header_value": joined,
+                    "points": -10, "message": "cookies-session-without-secure-flag-but-protected-by-hsts."}
         return {"header_name": name, "status": "Misconfigured", "header_value": joined,
                 "points": -40, "message": f"cookies-session-without-secure-flag: {', '.join(session_no_secure)}."}
 
@@ -84,10 +87,6 @@ def check(headers, context):
 
     if any_no_secure:
         if hsts:
-            session_under_hsts = [c for c, a in parsed if _is_session(a) and "secure" not in a]
-            if session_under_hsts:
-                return {"header_name": name, "status": "Misconfigured", "header_value": joined,
-                        "points": -10, "message": "cookies-session-without-secure-flag-but-protected-by-hsts."}
             return {"header_name": name, "status": "Misconfigured", "header_value": joined,
                     "points": -5, "message": "cookies-without-secure-flag-but-protected-by-hsts."}
         return {"header_name": name, "status": "Misconfigured", "header_value": joined,
